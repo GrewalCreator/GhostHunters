@@ -42,11 +42,12 @@ void* hunterSprite(void* hunterType){
                 if(sem_trywait(&(newRoomNode->room->semaphore)) == 0){           // <---------------- Lock New Room
                     // Lock Current Room And Move To New Room
                     sem_wait(&(hunter->currRoom->semaphore));                   // <---------------- Lock Curr Room
+                    RoomType* prevRoom = hunter->currRoom;
                     moveHuntersRoom(hunter, newRoomNode);
 
                     // Unlock Both Rooms
                     sem_post(&(hunter->currRoom->semaphore));                 // <---------------- Unlock Curr Room
-                    sem_post(&(newRoomNode->room->semaphore));                 // <---------------- Unlock New Room
+                    sem_post(&(prevRoom->semaphore));                         // <---------------- Unlock Prev Room
                     usleep(USLEEP_TIME);
                 }
 
@@ -130,7 +131,7 @@ void* hunterSprite(void* hunterType){
     removeHunterFromRoom(hunter, hunter->currRoom);
     sem_post(&(hunter->currRoom->semaphore));                                 // <---------------- Unlock Curr Room
 
-    printf("%s\n", "Hunter Has Exited The Building");
+    printf("%s %s %s\n", "Hunter", hunter->name,"Has Exited The Building");
     printf("\n");
     pthread_exit(NULL);
     return FUNC_SUCCESS;
