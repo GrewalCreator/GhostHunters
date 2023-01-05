@@ -46,8 +46,8 @@ void* hunterSprite(void* hunterType){
                     moveHuntersRoom(hunter, newRoomNode);
 
                     // Unlock Both Rooms
-                    sem_post(&(hunter->currRoom->semaphore));                 // <---------------- Unlock Curr Room
                     sem_post(&(prevRoom->semaphore));                         // <---------------- Unlock Prev Room
+                    sem_post(&(hunter->currRoom->semaphore));                 // <---------------- Unlock Curr Room
                     usleep(USLEEP_TIME);
                 }
 
