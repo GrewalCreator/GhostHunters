@@ -297,30 +297,20 @@ void findRoomEvidence(EvidenceLinkedList* list, EvidenceClassType evidenceClass,
   return:   void
 */
 void removeEvidenceNode(EvidenceLinkedList* list, EvidenceNodeType* node){
-
     if(node != NULL){
         EvidenceNodeType* prev = node->prev;
         EvidenceNodeType* next = node->next;
 
-        if(prev == NULL){
-            //Head
-            list->head = node->next;
-
-        }
-
-        if(next == NULL){
-            //Tail
-            list->tail = node->prev;
-
-        }
-
-
-        if(next != NULL && prev != NULL) {
+        if(prev == NULL)
+            list->head = next;
+        else
             prev->next = next;
-            next->prev = prev;
-        }
-    }
 
+        if(next == NULL)
+            list->tail = prev;
+        else
+            next->prev = prev;
+    }
 }
 
 

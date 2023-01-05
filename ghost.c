@@ -171,12 +171,12 @@ int isGhostly(EvidenceType* evidence, EvidenceClassType class){
     int isGhostly = 1;
     switch (class) {
         case EMF:
-            if(4.70 <= data <= 5.00){
+            if(4.70 <= data && data <= 5.00){
                 isGhostly = 0;
             }
             break;
         case TEMPERATURE:
-            if(-10 <= data <= 1.00){
+            if(-10 <= data && data <= 1.00){
                 isGhostly = 0;
             }
             break;
@@ -186,7 +186,7 @@ int isGhostly(EvidenceType* evidence, EvidenceClassType class){
             }
             break;
         case SOUND:
-            if(65 <= data <= 75.00){
+            if(65 <= data && data <= 75.00){
                 isGhostly = 0;
             }
             break;
