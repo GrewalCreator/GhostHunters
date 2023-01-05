@@ -1,5 +1,6 @@
 #include "gameDefs.h"
 
+
 /*
   Function: initEvidence
   Purpose:  function that initializes fields of the given type to value in parameters or default values.

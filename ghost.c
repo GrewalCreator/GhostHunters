@@ -159,6 +159,7 @@ void getGhostClassName(char* ghostType, GhostClassType class){
 
 }
 
+
 /*
   Function: isGhostly
   Purpose:  function that checks if the ghost is "ghostly" based on certain criteria
