@@ -94,6 +94,7 @@ typedef struct Hunter{
 
 // Main Functions
 void startGame(BuildingType*, HunterType**);
+void identifyGhostType(GhostType*, HunterType**);
 
 // Ghost Functions
 int initGhost(char*, GhostClassType, RoomType*, GhostType**);

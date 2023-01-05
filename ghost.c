@@ -11,8 +11,8 @@ void* ghostSprite(void* ghostType){
     GhostType* ghost = ghostType;
 
     while(1){
-        printGhostType(ghost);
-        usleep(USLEEP_TIME);
+        //printGhostType(ghost);
+        //usleep(USLEEP_TIME);
         int roomOptions[3] = {-1, -1, -1};
 
         if(ghost->currRoom->amountHuntersInRoom <= 0){
@@ -53,7 +53,7 @@ void* ghostSprite(void* ghostType){
 
                     sem_post(&(ghost->currRoom->semaphore));
                     sem_post(&(newRoomNode->room->semaphore));
-                    usleep(USLEEP_TIME);
+                    //usleep(USLEEP_TIME);
                 }
                 break;
 
@@ -65,7 +65,7 @@ void* ghostSprite(void* ghostType){
                     // Generate New Evidence
                     dropEvidence(ghost);
                     sem_post(&(ghost->currRoom->semaphore));
-                    usleep(USLEEP_TIME);
+                    //usleep(USLEEP_TIME);
                 }
                 break;
 
