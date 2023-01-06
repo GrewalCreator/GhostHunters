@@ -75,31 +75,52 @@ void identifyGhostType(GhostType* ghost, HunterType** hunterList){
     int tempFound = 0;
     int soundFound = 0;
     int emfFound = 0;
+
+    int validHunter[MAX_HUNTERS];
+    int invalidHunters= 0;
+
+    for(int i = 0; i < MAX_HUNTERS; ++i){
+        if(hunterList[i]->fear >= MAX_FEAR || hunterList[i]->boredomTimer <= 0){
+            validHunter[i] = 0;
+            invalidHunters++;
+        }else{
+            validHunter[i] = 1;
+        }
+
+    }
+
+    if(invalidHunters == MAX_HUNTERS){
+        printf("%s\n", "None Of The Hunters Could Manage The Ghost. Ghost Wins!");
+        return;
+    }
     for(int i = 0; i < MAX_HUNTERS; ++i){
         EvidenceNodeType* currNode = hunterList[i]->evidenceCollected->head;
 
-        while(currNode != NULL){
-            if(isGhostly(currNode->data, currNode->data->evidenceClass) == 0){
-                char name[MAX_STR];
-                getEvidenceClassName(name, currNode->data->evidenceClass);
+
+        if(validHunter[i] == 1){
+            while(currNode != NULL){
+                if(isGhostly(currNode->data, currNode->data->evidenceClass) == 0){
+                    char name[MAX_STR];
+                    getEvidenceClassName(name, currNode->data->evidenceClass);
 
 
-                if(strcmp(name, "FINGERPRINTS") == 0){
-                    fingerprintFound = 1;
-                    break;
-                }else if(strcmp(name, "SOUND") == 0){
-                    soundFound = 1;
-                    break;
-                }else if(strcmp(name, "EMF") == 0){
-                    emfFound = 1;
-                    break;
-                }else if(strcmp(name, "TEMPERATURE") == 0){
-                    tempFound = 1;
-                    break;
+                    if(strcmp(name, "FINGERPRINTS") == 0){
+                        fingerprintFound = 1;
+                        break;
+                    }else if(strcmp(name, "SOUND") == 0){
+                        soundFound = 1;
+                        break;
+                    }else if(strcmp(name, "EMF") == 0){
+                        emfFound = 1;
+                        break;
+                    }else if(strcmp(name, "TEMPERATURE") == 0){
+                        tempFound = 1;
+                        break;
+                    }
+
                 }
-
+                currNode = currNode->next;
             }
-            currNode = currNode->next;
         }
 
     }
@@ -131,7 +152,7 @@ void identifyGhostType(GhostType* ghost, HunterType** hunterList){
     if(strcmp(speculatedType, ghostClassName) == 0){
         printf("%s\n", "Ghost Was Successfully Identified! The Ghost Has Been Captured :)");
     }else{
-        printf("%s\n", "The Hunters Mis-Identified The Ghost! The Ghost Now Owns The Building . . .");
+        printf("%s\n", "The Hunters Could Not Identified The Ghost! The Ghost Now Owns The Building . . .");
     }
 }
 
