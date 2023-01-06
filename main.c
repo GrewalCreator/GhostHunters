@@ -77,7 +77,7 @@ void identifyGhostType(GhostType* ghost, HunterType** hunterList){
     int emfFound = 0;
 
     int validHunter[MAX_HUNTERS];
-    int invalidHunters= 0;
+    int invalidHunters = 0;
 
     for(int i = 0; i < MAX_HUNTERS; ++i){
         if(hunterList[i]->fear >= MAX_FEAR || hunterList[i]->boredomTimer <= 0){
@@ -89,7 +89,7 @@ void identifyGhostType(GhostType* ghost, HunterType** hunterList){
 
     }
 
-    if(invalidHunters == MAX_HUNTERS){
+    if(invalidHunters >= MAX_HUNTERS){
         printf("%s\n", "None Of The Hunters Could Manage The Ghost. Ghost Wins!");
         return;
     }

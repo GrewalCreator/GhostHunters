@@ -8,8 +8,8 @@ void* hunterSprite(void* hunterType){
     getEvidenceClassName(className, hunter->readableEvidence);
 
     while(1){
-        //printHunterType(hunter);
-        //usleep(USLEEP_TIME);
+        printHunterType(hunter);
+
 
         // If Hunter Has Collected 3 or More Pieces Of Ghostly Evidence
         if(hunter->ghostlyEvidenceCollected >= 3){
@@ -57,7 +57,7 @@ void* hunterSprite(void* hunterType){
                 sem_wait(&(hunter->currRoom->semaphore));                       // <---------------- Lock Curr Room
                 pickUpEvidence(hunter);
                 sem_post(&(hunter->currRoom->semaphore));                     // <---------------- Unlock Curr Room
-                //usleep(USLEEP_TIME);
+
                 break;
             case 2:
                 // Communicate Evidence
@@ -121,7 +121,7 @@ void* hunterSprite(void* hunterType){
                 }
 
                 sem_post(&(hunter->currRoom->semaphore));                     // <---------------- Unlock Curr Room
-                //usleep(USLEEP_TIME);
+
 
                 break;
             default:
