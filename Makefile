@@ -31,7 +31,7 @@ sharedFunctions.o: sharedFunctions.c gameDefs.h
 	$(HOST_CC) -c sharedFunctions.c
 
 valgrind:
-	valgrind --leak-check=full --track-origins=yes -s ./$(EXEC)
+	valgrind --log-file="valgrindOutput.txt" --leak-check=full --track-origins=yes -s ./$(EXEC)
 
 clean:
 	rm -f *.o *~ $(EXEC)

@@ -1,0 +1,14 @@
+==6683== Memcheck, a memory error detector
+==6683== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==6683== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==6683== Command: ./GhostHunters
+==6683== Parent PID: 6682
+==6683== 
+==6683== 
+==6683== HEAP SUMMARY:
+==6683==     in use at exit: 0 bytes in 0 blocks
+==6683==   total heap usage: 674 allocs, 674 frees, 25,326 bytes allocated
+==6683== 
+==6683== All heap blocks were freed -- no leaks are possible
+==6683== 
+==6683== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
